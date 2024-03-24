@@ -2,6 +2,12 @@ This project is developed in Visual Studio 2022 with Core 3.1, using EntityFrame
 Microservices are developed in seperate languages using C# and F#. </br>
 Each Microservices has seperate DB connection, Docker images and running simultaneouly on seperate port. </br>
 
+Install these below packages if not included</br>
+<code>Install Microsoft.AspNetCore.App 2.1.34 </br>
+Install-Package Microsoft.EntityFrameworkCore.Tools -Version 5.0</br>
+Install-Package Microsoft.EntityFrameworkCore.SqlServer -Version 5.0</br>
+Install-Package Microsoft.EntityFrameworkCore.SqlServer.Design</br></code>
+
 Important command for migrating DB script and update DB. Need to execute these command in **Package Manager Console** in Visual Studio.<br/>
 **<code>Add-Migration InitialCreate </br>
 update-database</br></code>**
