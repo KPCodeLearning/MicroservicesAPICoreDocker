@@ -3,12 +3,15 @@ Each Microservices has seperate DB connection, Docker images and running simulta
 
 Important command for migrating DB script and update DB. Need to execute these command in **Package Manager Console** in Visual Studio.<br/>
 **<code>Add-Migration InitialCreate </br>
-update-database</br>
-Add-Migration StudentMigration -Context StudentContext</br>
-update-database -Context StudentContext</code>**</br>
+update-database</br></code>**
+
+If there is multiple DBContext in a single Microservices use below command to create Migration </br>
+<code>Add-Migration AnythingMigrationName -Context DBContextName</br>
+update-database -Context DBContextName</code></br>
+where DBContextName is conetext name of the microservices
 
 For removing Migration: </br>
-<code>Remove-Migration -Context StudentContext</code>
+**<code>Remove-Migration -Context StudentContext</code>**
 
 To create Docker Images run the below command in **Package Manager Console**<br/>
-<code>dotnet publish /p:PublishProfile=DefaultContainer</code>
+**<code>dotnet publish /p:PublishProfile=DefaultContainer</code>**
