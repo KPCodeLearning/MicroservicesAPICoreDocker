@@ -6,12 +6,13 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using StudentMicroservices.DBContext;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace APICoreDocker
+namespace StudentMicroservices
 {
     public class Startup
     {
@@ -26,6 +27,11 @@ namespace APICoreDocker
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddDbContext<StudentContext>(options =>
+                options.UseSqlServer(
+                    Configuration.GetConnectionString("StudentMicroservicesDB"),
+                    b => b.MigrationsAssembly(typeof(StudentContext).Assembly.FullName)));
+            services.AddTransient<IStudentContext, StudentContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
